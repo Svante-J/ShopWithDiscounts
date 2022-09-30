@@ -12,7 +12,7 @@ public static class MockProducts
             {
             PLU = 'A',
             Name = "Gummihansker",
-            Price = 59.90,
+            Price = (decimal)59.90,
             },
              new ()
             {
@@ -24,7 +24,7 @@ public static class MockProducts
             {
                 PLU = 'C',
             Name = "Talkum",
-            Price = 19.54,
+            Price = (decimal)19.54,
             },
         });
 }

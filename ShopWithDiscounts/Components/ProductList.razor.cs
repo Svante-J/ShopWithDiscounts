@@ -11,10 +11,12 @@ public partial class ProductList
     [EditorRequired]
     [Parameter] public List<Product> Products { get; set; } = new();
     [Parameter] public bool DisplayBuyButton { get; set; }
+    public int Quantity { get; set; }
 
-    private void Buy(char plu)
+    private void AddToCart( Product product, int qty)
     {
-        CartService.AddProductToCart(plu);
+        var newProduct = new Product { Name = product.Name, PLU = product.PLU, Price = product.Price, Quantity = qty };
+        CartService!.AddProductToCart(newProduct);
     }
 }
 

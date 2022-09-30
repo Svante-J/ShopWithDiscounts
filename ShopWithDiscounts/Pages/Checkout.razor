@@ -2,6 +2,10 @@
 
 <PageTitle>Checkout</PageTitle>
 
-<h3> you have @CartService!.SelectedItems.Count in Cart </h3>
+@*<h3> you have @TotalItems(CartService!.SelectedItems) items in Cart </h3>*@
+<h3> you have @Items items in Cart </h3>
 
-<ProductList Products="CartService.SelectedItems"> </ProductList>
+<ProductList Products="CartService!.SelectedItems"> </ProductList>
+
+<h4> Total Price @TotalPrice kr</h4>
+<h5>Öresavrundning @ÖresAvruindning</h5>

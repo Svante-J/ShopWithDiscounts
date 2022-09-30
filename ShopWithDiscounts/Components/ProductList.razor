@@ -3,13 +3,19 @@
 {
     <div class="card w-25">
         <div class="card-body">
-            <h5 class="card-title">@product.Name</h5>
-            @*<p class="card-text">@product.Description</p>*@
+            <h5 class="card-title">@product.Name</h5>            
             <blockquote class="card-text">$@product.Price</blockquote>
             @if (DisplayBuyButton)
+            {                
+                <span>
+                Quantity:
+                <input @bind="Quantity" />
+                <button class="btn btn-primary" type="button" @onclick="() => AddToCart(product, Quantity)">Add</button>
+                </span>
+            }
+            else
             {
-                // foreach el liknande för qty
-                <button class="btn btn-primary" type="button" @onclick="() => Buy(product.PLU)">Buy</button>
+                <blockquote class="card-text"> Quantity @product.Quantity</blockquote>
             }
         </div>
     </div>
