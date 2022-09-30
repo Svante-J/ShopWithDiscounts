@@ -13,10 +13,15 @@ public partial class ProductList
     [Parameter] public bool DisplayBuyButton { get; set; }
     public int Quantity { get; set; }
 
-    private void AddToCart( Product product, int qty)
+    private void AddToCart(Product product, int qty)
     {
-        var newProduct = new Product { Name = product.Name, PLU = product.PLU, Price = product.Price, Quantity = qty };
-        CartService!.AddProductToCart(newProduct);
+        if (qty > 0)
+        {
+            var newProduct = new Product { Name = product.Name, PLU = product.PLU, Price = product.Price, Quantity = qty };
+       
+            CartService!.AddProductToCart(newProduct);
+        }
+        Quantity = 0;
     }
 }
 

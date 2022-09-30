@@ -27,8 +27,10 @@ public static class DiscountCalculator
 
     public static int TotalPrice(List<Product> products)
     {
-        var totalPrice = products.Sum(p => p.Price * p.Quantity);
-        int total = decimal.ToInt32(totalPrice);
+        var totalPrice = products.Sum(p => p.TotalPrice);
+        var rounded = Math.Round(totalPrice, 0, 0);
+        decimal oresAvrundning = totalPrice - rounded;
+        int total = decimal.ToInt32(rounded);
         return total;
     }
 }
