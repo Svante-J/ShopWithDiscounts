@@ -4,7 +4,7 @@
     <div class="card w-25">
         <div class="card-body">
             <h5 class="card-title">@product.Name</h5>            
-            <blockquote class="card-text">$@product.Price</blockquote>
+            <blockquote class="card-text">@product.Price  kr @if(product.PLU == 'C') {<span> /Kg*</span>} </blockquote>
             @if (DisplayBuyButton)
             {                
                 <span>
@@ -15,7 +15,7 @@
             }
             else
             {
-                <blockquote class="card-text"> Quantity @product.Quantity</blockquote>
+                <blockquote class="card-text"> Quantity @product.Quantity Price @product.TotalPrice</blockquote>                
             }
         </div>
     </div>

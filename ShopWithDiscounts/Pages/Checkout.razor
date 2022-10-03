@@ -2,9 +2,55 @@
 
 <PageTitle>Checkout</PageTitle>
 
-@*<h3> you have @TotalItems(CartService!.SelectedItems) items in Cart </h3>*@
-<h3> you have @Items items in Cart </h3>
+
+<div class="col-md-4 order-md-2 mb-4">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Your cart @Items items</span>
+
+    </h4>
+</div>
 
 <ProductList Products="CartService!.SelectedItems"> </ProductList>
 
-<h4> Total Price @TotalPrice kr</h4>
+<div class="card w-25 mt-3">
+    <ul class="list-group mb-3">
+        @if (RubberGlovesDiscount > 0)
+        {
+            <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Gummihansker rabatt  kr</h6>
+                    <small>3 for 2</small>
+                </div>
+                <span class="text-success">- @RubberGlovesDiscount</span>
+            </li>
+        }
+        @if (StetooskopeDiscount > 0)
+        {
+            <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Stetoskope rabatt kr</h6>
+                    <small>3 for 999 kr</small>
+                </div>
+                <span class="text-success">- @StetooskopeDiscount</span>
+            </li>
+        }
+        @if (StetooskopeDiscount > 0 && RubberGlovesDiscount > 0)
+        {
+            <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Total rabatt kr</h6>
+                    @*<small>3 for 999 kr</small>*@
+                </div>
+                <span class="text-success">- @TotalDiscount</span>
+            </li>
+        }
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Total kr</span>
+            <strong>@TotalPriceWithDiscount</strong>
+        </li>
+    </ul>
+
+    @*<h4> Price @TotalPrice kr</h4>
+    <h4> Total @TotalPriceWithDiscount kr</h4>*@
+</div>
+
